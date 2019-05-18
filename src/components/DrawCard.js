@@ -1,25 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { fetchNewCard } from '../actions/deck';
 
-class DrawCard extends Component {
-    fetchNewCard = deckId => () => {
-        this.props.fetchNewCard(deckId);
-    }
+const DrawCard = props => {
+    const { deckId, value, suit, code, image, fetchNewCard } = props;
 
-    render() {
-        console.log('DrawCard props', this.props);
+    return (
+        <div>
+            <p><button onClick={fetchNewCard(deckId)}> Draw the next card!</button></p>
+            { code ? <p><br /><img src={image} alt={`${value} of ${suit}`} /></p> : null }
+        </div>
+    )
+}
 
-        const {deckId, value, suit, code, image } = this.props;
-    
-        return (
-            <div>
-                <button onClick={this.fetchNewCard(deckId)}> Draw the next card!</button>
-                <br />
-                <p>{ code ? <img src={image} alt={`${value} of ${suit}`} /> : null }</p>
-            </div>
-        )
-    }
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchNewCard: deckId => () => dispatch(fetchNewCard(deckId))
+    };
 }
 
 export default connect(
@@ -31,5 +28,5 @@ export default connect(
         code, 
         image 
     } }) => ({ deckId, remaining, value, suit, code, image }),
-    { fetchNewCard }
+    mapDispatchToProps
 )(DrawCard);
