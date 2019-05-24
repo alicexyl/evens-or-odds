@@ -1,4 +1,4 @@
-import { DECK } from '../actions/types';
+import { DECK, SET_GAME_STARTED } from '../actions/types';
 import fetchStates from './fetchStates';
 
 const DEFAULT_DECK = {
@@ -20,6 +20,8 @@ const deckReducer = (state = DEFAULT_DECK, action) => {
     case DECK.FETCH_CARD_SUCCESS:
         ({ remaining, cards } = action);
         return { ...state, remaining, cards, fetchState: fetchStates.success };
+    case SET_GAME_STARTED:
+        return DEFAULT_DECK;
     default:
         return state;
     }

@@ -1,4 +1,4 @@
-import { SET_GUESS, DECK } from '../actions/types';
+import { SET_GUESS, SET_GAME_STARTED, DECK } from '../actions/types';
 import GUESS from '../actions/guessTypes';
 
 const DEFAULT_GAME_STATE = {
@@ -10,6 +10,8 @@ const gameStateReducer = (state = DEFAULT_GAME_STATE, action) => {
     switch(action.type) {
     case SET_GUESS:
         return { ...state, guess: action.guess };
+    case SET_GAME_STARTED:
+        return DEFAULT_GAME_STATE;
     case DECK.FETCH_CARD_SUCCESS:
         const { value } = action.cards && action.cards[0];
 
