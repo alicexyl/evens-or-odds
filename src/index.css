@@ -21,6 +21,5 @@ h1, h2, h3, h4, h5 {
 }
 
 button.is-selected {
-    border-color: green;
-    border-width: 2px;
+    border: #43a047 2px solid;
 }

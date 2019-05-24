@@ -5,6 +5,7 @@ import { fetchNewDeck } from '../actions/deck';
 import fetchStates from '../reducers/fetchStates';
 import Instructions from './Instructions';
 import GameState from './GameState';
+import Guess from './Guess';
 import DrawCard from './DrawCard';
 import Card from './Card';
 
@@ -33,6 +34,8 @@ class App extends Component {
                             <h3>The game is on!</h3>
                             <br />
                             <GameState />
+                            <br />
+                            <Guess />
                             <br />
                             <DrawCard />
                             <hr />
