@@ -4,6 +4,7 @@ import { startGame, cancelGame } from '../actions/settings';
 import { fetchNewDeck } from '../actions/deck';
 import fetchStates from '../reducers/fetchStates';
 import Instructions from './Instructions';
+import GameState from './GameState';
 import DrawCard from './DrawCard';
 import Card from './Card';
 
@@ -14,16 +15,14 @@ class App extends Component {
     }
 
     render() {
-       console.log('this', this);
-
-       if (this.props.fetchState === fetchStates.error) {
-           return (
-               <div>
+        if (this.props.fetchState === fetchStates.error) {
+            return (
+                <div>
                    <p>Please try reloading the app. An error occured.</p>
                    <p>{this.props.message}</p>
-               </div>
-           );
-       };
+                </div>
+            );
+        };
 
         return (
             <div>
@@ -32,6 +31,8 @@ class App extends Component {
                     this.props.gameStarted ? (
                         <div>
                             <h3>The game is on!</h3>
+                            <br />
+                            <GameState />
                             <br />
                             <DrawCard />
                             <hr />

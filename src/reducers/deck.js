@@ -1,6 +1,5 @@
 import { DECK } from '../actions/types';
 import fetchStates from './fetchStates';
-import { stat } from 'fs';
 
 const DEFAULT_DECK = {
     deckId: '',
