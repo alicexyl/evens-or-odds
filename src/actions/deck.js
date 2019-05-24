@@ -40,11 +40,9 @@ export const fetchNewCard = deckId => dispatch => {
 
 export const fetchCardSuccess = cardsJson => {
     const { remaining, cards } = cardsJson;
-    const { value, suit, code, image } = cards && cards[0];
 
     return {
         type: DECK.FETCH_CARD_SUCCESS,
-        remaining, 
-        value, suit, code, image
+        remaining, cards
      };
 }

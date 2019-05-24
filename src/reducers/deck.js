@@ -10,17 +10,17 @@ const DEFAULT_DECK = {
 };
 
 const deckReducer = (state = DEFAULT_DECK, action) => {
-    console.log('state', state, 'action', action);
+    let remaining, deckId, cards;
 
     switch(action.type) {
     case DECK.FETCH_SUCCESS:
-        const { remaining, deckId } = action;
+        ({ remaining, deckId } = action);
         return { ...state, remaining, deckId, fetchState: fetchStates.success };
     case DECK.FETCH_ERROR:
         return { ...state, message: action.message, fetchState: fetchStates.error }
     case DECK.FETCH_CARD_SUCCESS:
-        const { remaining: remaining2, value, suit, code, image } = action;
-        return { ...state, remaining: remaining2, value, suit, code, image, fetchState: fetchStates.success };
+        ({ remaining, cards } = action);
+        return { ...state, remaining, cards, fetchState: fetchStates.success };
     default:
         return state;
     }
